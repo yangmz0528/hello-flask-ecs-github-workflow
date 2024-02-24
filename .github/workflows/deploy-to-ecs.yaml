@@ -2,9 +2,9 @@ name: Deploy to Amazon ECS
 
 on:
   push:
-    branches: 
-      - main
-      - dev
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
 
 env:            
   AWS_REGION: ap-southeast-1           
@@ -19,7 +19,7 @@ jobs:
   deploy:
     name: Deploy
     environment:
-      name: ${{ github.ref }}
+      name: ${{ github.ref_name }}
     runs-on: ubuntu-latest
 
     steps:
